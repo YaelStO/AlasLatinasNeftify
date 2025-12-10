@@ -3,7 +3,9 @@ import jwt from 'jsonwebtoken'
 import { nanoid } from 'nanoid'
 import { readData, writeData } from './store.js'
 
-const JWT_SECRET = process.env.JWT_SECRET || 'change-this-in-production'
+// Get JWT_SECRET from environment or use a default for development
+// For production: Set JWT_SECRET env var in Vercel Dashboard
+const JWT_SECRET = process.env.JWT_SECRET || process.env.jwt_secret || 'your-super-secret-key-change-in-production'
 const JWT_EXPIRES_IN = '7d'
 
 export default async (req, res) => {
