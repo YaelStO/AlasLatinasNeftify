@@ -12,7 +12,10 @@
 - Shows the full hero + content when user IS authenticated
 
 ### ✅ SPA Fallback for Netlify
-- Added `netlify.toml` with:
+- Moved `netlify.toml` to repo root (`/netlify.toml`) with proper paths:
+  - `base = "frontend"`
+  - `functions = "frontend/netlify/functions"`
+  - `publish = "frontend/dist"`
   - `/api/*` redirects to `/.netlify/functions/:splat` (for Netlify Functions)
   - `/*` redirects to `/index.html` (SPA fallback - prevents 404 on client-side routes)
 - Added `public/_redirects` file as backup
@@ -34,12 +37,7 @@
 - Select branch: `netlify-fix` (or merge to `main` first, then select `main`)
 
 ### 2. Build Settings
-**Important**: Set these in Netlify dashboard:
-
-- **Base directory**: `frontend`
-- **Build command**: `npm run build`
-- **Publish directory**: `dist`
-- **Functions directory**: `netlify/functions` (or leave default)
+**Leave all settings at defaults** (Netlify will auto-detect `netlify.toml` from repo root)
 
 ### 3. Environment Variables (Add in Netlify Dashboard)
 Set these in **Site settings → Build & deploy → Environment**:
@@ -58,10 +56,12 @@ VITE_API_URL=/api
 ## What Happens During Deployment
 
 1. Netlify clones from GitHub (from `netlify-fix` branch)
-2. Installs dependencies: `npm install` (in `frontend/` directory)
-3. Builds: `npm run build` (generates optimized `dist/` folder)
-4. Publishes `dist/` folder as your site
-5. Netlify Functions in `frontend/netlify/functions/` are automatically deployed
+2. Reads `netlify.toml` from repo root automatically
+3. Sets base directory to `frontend/`
+4. Installs dependencies: `npm install` (in `frontend/` directory)
+5. Builds: `npm run build` (generates optimized `frontend/dist/` folder)
+6. Publishes `frontend/dist/` folder as your site
+7. Netlify Functions in `frontend/netlify/functions/` are automatically deployed
 
 ## User Flow After Deployment
 
