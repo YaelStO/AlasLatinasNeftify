@@ -1,0 +1,21 @@
+[package]
+name = "soroban_users"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# soroban-sdk 21.x is more stable than 20.5.0 for Testnet
+soroban-sdk = "21.7"
+serde = { version = "1.0", features = ["derive"] }
+
+[dev-dependencies]
+# enable `testutils` only for dev (unit tests run on host)
+soroban-sdk = { version = "21.7", features = ["testutils"] }
+
+[profile.release]
+opt-level = "z"
+
+# NOTE: Adjust versions above to match your installed Soroban toolchain if needed.
