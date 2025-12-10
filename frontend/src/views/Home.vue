@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <div class="hero">
-      <h1>🌎 Bienvenido a Alas Latinas 3.0</h1>
-      <p>Tu plataforma de viajes con tecnología Soroban en Stellar</p>
-      <div class="hero-buttons">
-        <router-link to="/destinations" class="btn btn-primary">Explorar Destinos</router-link>
-        <router-link v-if="!authStore.isAuthenticated" to="/register" class="btn btn-secondary">
-          Crear Cuenta
-        </router-link>
-        <router-link v-if="authStore.isAuthenticated" to="/reservations" class="btn btn-secondary">
-          Ver Mis Reservas
-        </router-link>
+      <div v-if="authStore.isAuthenticated" class="hero">
+        <h1>🌎 Bienvenido a Alas Latinas 3.0</h1>
+        <p>Tu plataforma de viajes con tecnología Soroban en Stellar</p>
+        <div class="hero-buttons">
+          <router-link to="/destinations" class="btn btn-primary">Explorar Destinos</router-link>
+          <router-link v-if="!authStore.isAuthenticated" to="/register" class="btn btn-secondary">
+            Crear Cuenta
+          </router-link>
+          <router-link v-if="authStore.isAuthenticated" to="/reservations" class="btn btn-secondary">
+            Ver Mis Reservas
+          </router-link>
+        </div>
       </div>
-    </div>
+
+      <!-- If user is not authenticated, show a centered login/register card locally -->
+      <div v-else class="auth-card-wrap">
+        <div class="auth-card">
+          <h2>Bienvenido — Inicia sesión o crea una cuenta</h2>
+          <p>Para continuar, inicia sesión o regístrate. Esto se hace localmente en la aplicación.</p>
+          <div class="auth-actions">
+            <router-link to="/login" class="btn btn-primary">Iniciar Sesión</router-link>
+            <router-link to="/register" class="btn btn-secondary">Registrarse</router-link>
+          </div>
+          <p class="small">También puedes explorar destinos después de iniciar sesión.</p>
+        </div>
+      </div>
 
     <section class="features">
       <h2>Características Principales</h2>
@@ -56,6 +69,36 @@ const authStore = useAuthStore()
 .home {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.auth-card-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.auth-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  max-width: 520px;
+  text-align: center;
+}
+
+.auth-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.auth-card .small {
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .hero {
