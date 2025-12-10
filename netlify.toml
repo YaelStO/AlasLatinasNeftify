@@ -1,0 +1,15 @@
+[build]
+  functions = "netlify/functions"
+  publish = "dist"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  # SPA fallback: redirect all non-file routes to index.html so client-side routing works
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
