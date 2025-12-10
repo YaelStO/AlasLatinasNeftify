@@ -1,10 +1,7 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "env": {
-    "JWT_SECRET": "@jwt_secret",
-    "VITE_API_URL": "/api"
-  },
+  
   "rewrites": [
     {
       "source": "/api/:path*",
