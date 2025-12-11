@@ -17,4 +17,10 @@ export default defineConfig({
   define: {
     'import.meta.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || '/api')
   }
+  ,
+  build: {
+    // Increase chunk size warning limit (in kB) to reduce noisy warnings for large bundles
+    chunkSizeWarningLimit: 1200
+  }
 })
+
