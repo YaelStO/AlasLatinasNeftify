@@ -1,8 +1,8 @@
-const express = require('express')
-const fs = require('fs')
-const path = require('path')
-const { Server, Networks, TransactionBuilder, Operation, Keypair, Asset } = require('stellar-sdk')
-const { db } = require('../utils/database')
+import express from 'express'
+import fs from 'fs'
+import path from 'path'
+import { Server, Networks, TransactionBuilder, Operation, Keypair, Asset } from 'stellar-sdk'
+import { db } from '../utils/database'
 
 const router = express.Router()
 
@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
 
     // Otherwise, try to use soroban CLI (identity alias saved) to build/sign/send the tx.
     // This requires soroban CLI to be installed and the identity alias (testsrc) configured.
-    const { execFile } = require('child_process')
+    import { execFile } from 'child_process'
     const sorobanPath = process.env.SOROBAN_PATH || path.join(process.env.HOME || '.', '.cargo', 'bin', 'soroban')
     // amount in stroops: pass as number
     const args = [
@@ -92,4 +92,4 @@ router.post('/', async (req, res) => {
   }
 })
 
-module.exports = router
+export default router

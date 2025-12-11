@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+import jwt from 'jsonwebtoken'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d'
@@ -29,4 +29,4 @@ const authMiddleware = (req, res, next) => {
   next()
 }
 
-module.exports = { generateToken, verifyToken, authMiddleware }
+export default { generateToken, verifyToken, authMiddleware }

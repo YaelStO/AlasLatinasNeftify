@@ -1,6 +1,6 @@
-const express = require('express')
-const { authMiddleware } = require('../middleware/auth.js')
-const { db } = require('../utils/database.js')
+import express from 'express'
+import { authMiddleware } from '../middleware/auth.js'
+import { db } from '../utils/database.js'
 
 const router = express.Router()
 
@@ -139,4 +139,4 @@ router.post('/:id/cancel', authMiddleware, (req, res) => {
   })
 })
 
-module.exports = router
+export default router

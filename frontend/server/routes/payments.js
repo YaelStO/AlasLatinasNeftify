@@ -1,10 +1,10 @@
-const express = require('express')
-const fs = require('fs')
-const path = require('path')
-const { execSync } = require('child_process')
-const { Server, Networks, TransactionBuilder, Operation, Keypair, Asset } = require('stellar-sdk')
-const { db } = require('../utils/database')
-const { authMiddleware } = require('../middleware/auth')
+import express from 'express'
+import fs from 'fs'
+import path from 'path'
+import { execSync } from 'child_process'
+import { Server, Networks, TransactionBuilder, Operation, Keypair, Asset } from 'stellar-sdk'
+import { db } from '../utils/database'
+import { authMiddleware } from '../middleware/auth'
 
 const router = express.Router()
 
@@ -101,4 +101,4 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 })
 
-module.exports = router
+export default router

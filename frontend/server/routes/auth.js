@@ -1,7 +1,7 @@
-const express = require('express')
-const bcrypt = require('bcryptjs')
-const { generateToken, authMiddleware } = require('../middleware/auth.js')
-const { db } = require('../utils/database.js')
+import express from 'express'
+import bcrypt from 'bcryptjs'
+import { generateToken, authMiddleware } from '../middleware/auth.js'
+import { db } from '../utils/database.js'
 
 const router = express.Router()
 
@@ -165,5 +165,4 @@ router.post('/link-wallet', authMiddleware, (req, res) => {
   })
 })
 
-module.exports = router
-
+export default router

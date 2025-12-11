@@ -1,7 +1,7 @@
-const fs = require('fs')
-const path = require('path')
-const { Low, JSONFile } = require('lowdb')
-const { nanoid } = require('nanoid')
+import fs from 'fs'
+import path from 'path'
+import { Low, JSONFile } from 'lowdb'
+import { nanoid } from 'nanoid'
 
 const dataDir = path.join(__dirname, '..', 'data')
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true })
@@ -138,4 +138,4 @@ const api = {
   }
 }
 
-module.exports = { db: api }
+export default { db: api }

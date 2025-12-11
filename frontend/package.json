@@ -1,6 +1,7 @@
 {
   "name": "alas-latinas-frontend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Frontend Vue.js 3 para Alas Latinas 3.0 con Soroban",
   "main": "index.js",
   "scripts": {
@@ -22,8 +23,7 @@
     "lowdb": "^3.0.0",
     "nanoid": "^4.0.0",
     "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.0",
-    "@netlify/blobs": "^1.0.0"
+    "jsonwebtoken": "^9.0.0"
   },
   "devDependencies": {
     "vite": "^4.4.9",

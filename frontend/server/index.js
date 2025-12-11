@@ -1,11 +1,12 @@
-const express = require('express')
-const cors = require('cors')
-require('dotenv').config()
-const authRoutes = require('./routes/auth.js')
-const destinationRoutes = require('./routes/destinations.js')
-const reservationRoutes = require('./routes/reservations.js')
-const paymentRoutes = require('./routes/payments.js')
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import authRoutes from './routes/auth.js'
+import destinationRoutes from './routes/destinations.js'
+import reservationRoutes from './routes/reservations.js'
+import paymentRoutes from './routes/payments.js'
 
+dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3001
