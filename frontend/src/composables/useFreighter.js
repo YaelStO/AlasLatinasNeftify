@@ -48,8 +48,10 @@ export function useFreighter() {
         throw new Error('Necesitas conectar Freighter primero')
       }
 
+      // Use horizon endpoint from env or default to testnet
+      const HORIZON_URL = import.meta.env.VITE_HORIZON_URL || 'https://horizon-testnet.stellar.org'
       // Create transaction
-      const server = new Server('https://horizon-testnet.stellar.org')
+      const server = new Server(HORIZON_URL)
       const sourceAccount = await server.loadAccount(publicKey.value)
 
       const asset = assetCode === 'native' 

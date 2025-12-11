@@ -88,8 +88,9 @@ const submitPayment = async () => {
       throw new Error('Ingresa una dirección de destino')
     }
 
-    // Build transaction
-    const server = new Server('https://horizon-testnet.stellar.org')
+    // Build transaction (use env override if provided)
+    const HORIZON_URL = import.meta.env.VITE_HORIZON_URL || 'https://horizon-testnet.stellar.org'
+    const server = new Server(HORIZON_URL)
     const sourceAccount = await server.loadAccount(publicKey.value)
 
     const txBuilder = new TransactionBuilder(sourceAccount, {
