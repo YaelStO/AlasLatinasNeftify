@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node api/init-db.js && vite build",
     "preview": "vite preview",
     "server": "node server/index.js",
     "test": "node server/tests.js"
