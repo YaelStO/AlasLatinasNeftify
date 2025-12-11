@@ -54,6 +54,35 @@ router.post('/', authMiddleware, (req, res) => {
   })
 })
 
+// Actualizar reserva (p. ej. marcar paymentStatus)
+router.put('/', authMiddleware, (req, res) => {
+  const { reservationId, paymentStatus, status } = req.body
+
+  if (!reservationId) {
+    return res.status(400).json({ message: 'reservationId es requerido' })
+  }
+
+  const reservation = db.findReservationById(reservationId)
+  if (!reservation) {
+    return res.status(404).json({ message: 'Reserva no encontrada' })
+  }
+
+  if (reservation.userId !== req.user.userId) {
+    return res.status(403).json({ message: 'No autorizado' })
+  }
+
+  if (paymentStatus) {
+    db.updatePaymentStatus(reservationId, paymentStatus)
+  }
+
+  if (status) {
+    db.updateReservationStatus(reservationId, status)
+  }
+
+  const updated = db.findReservationById(reservationId)
+  res.json({ message: 'Reserva actualizada', reservation: updated })
+})
+
 // Obtener estado de reserva
 router.get('/:id/status', authMiddleware, (req, res) => {
   const reservation = db.findReservationById(req.params.id)
