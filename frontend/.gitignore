@@ -59,3 +59,4 @@ VISUAL_INTEGRATION_GUIDE.md
 # Root level files that shouldn't be tracked
 index.html
 index.js
+.vercel

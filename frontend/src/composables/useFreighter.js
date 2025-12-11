@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { Keypair, TransactionBuilder, Operation, Asset, Networks, Server } from 'stellar-sdk'
+import { Keypair, TransactionBuilder, Operation, Asset, Networks, Server } from '@stellar/stellar-sdk'
 
 export function useFreighter() {
   const isConnected = ref(false)

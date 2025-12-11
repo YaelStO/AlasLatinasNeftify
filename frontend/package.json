@@ -19,7 +19,7 @@
     "vue-router": "^4.2.4",
     "pinia": "^2.1.6",
      "axios": "^1.5.0",
-    "stellar-sdk": "^8.2.0",
+    "@stellar/stellar-sdk": "^11.3.0",
     "lowdb": "^3.0.0",
     "nanoid": "^4.0.0",
     "bcryptjs": "^2.4.3",
